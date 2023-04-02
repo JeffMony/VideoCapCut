@@ -5,8 +5,10 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.Manifest;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 
 import com.github.florent37.runtimepermission.RuntimePermission;
+import com.jeffmony.media.LogTag;
 import com.jeffmony.media.MediaSdk;
 import com.jeffmony.media.effect.InputType;
 import com.jeffmony.media.export.ExportInfo;
@@ -53,25 +55,25 @@ public class MainActivity extends AppCompatActivity {
 
         findViewById(R.id.btn_video_export).setOnClickListener(v -> {
             IVideoExport videoExport = MediaSdk.createVideoExport();
-            String config = "/sdcard/poizon/config.json";
-            ExportInfo exportInfo = new ExportInfo("/sdcard/poizon/output.mp4");
+            String config = "/sdcard/DCIM/config.json";
+            ExportInfo exportInfo = new ExportInfo("/sdcard/DCIM/output.mp4");
             videoExport.export(config, InputType.FILE, exportInfo, new ExportListener() {
                 @Override
                 public void onExportProgress(float progress) {
                     super.onExportProgress(progress);
-                    android.util.Log.e("litianpeng", "onExportProgress progress="+progress);
+                    Log.e(LogTag.TAG, "onExportProgress progress="+progress);
                 }
 
                 @Override
                 public void onExportComplete() {
                     super.onExportComplete();
-                    android.util.Log.e("litianpeng", "onExportComplete");
+                    Log.e(LogTag.TAG, "onExportComplete");
                 }
 
                 @Override
                 public void onExportFailed(int type, int code, String msg) {
                     super.onExportFailed(type, code, msg);
-                    android.util.Log.e("litianpeng", "onExportFailed code="+code);
+                    Log.e(LogTag.TAG, "onExportFailed code="+code);
                 }
 
                 @Override

@@ -95,7 +95,7 @@ public class EditorActivity extends AppCompatActivity {
             public void onPosition(int position, int duration) {
                 super.onPosition(position, duration);
                 if (duration != mVideoDuration) {
-                    android.util.Log.e("litianpeng", "duration=" + duration);
+                    Log.e(LogTag.TAG, "duration=" + duration);
                     mVideoDuration = duration;
                     mVideoProgressBar.setMax(duration);
                 }
@@ -226,7 +226,7 @@ public class EditorActivity extends AppCompatActivity {
 
         // if (mMusicId == -1) {
         //     mVideoEditor.addMusic("{\n" +
-        //             "    \"path\":\"/sdcard/poizon/audio/test.wav\",\n" +
+        //             "    \"path\":\"/sdcard/DCIM/audio/test.wav\",\n" +
         //             "    \"clipOffset\":30000,\n" +
         //             "    \"startTime\":0,\n" +
         //             "    \"endTime\":30000,\n" +
@@ -253,7 +253,7 @@ public class EditorActivity extends AppCompatActivity {
             mVideoEditor.pause();
             if (mMusicId != -1) {
                 mVideoEditor.updateMusic(mMusicId, "{\n" +
-                        "    \"path\":\"/sdcard/poizon/audio/test.wav\",\n" +
+                        "    \"path\":\"/sdcard/DCIM/audio/test.wav\",\n" +
                         "    \"clipOffset\":5000,\n" +
                         "    \"startTime\":5000,\n" +
                         "    \"endTime\":20000,\n" +
