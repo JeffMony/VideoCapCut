@@ -15,7 +15,6 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.jeffmony.media.LogTag;
 import com.jeffmony.media.MediaSdk;
 import com.jeffmony.media.VideoRenderListener;
-import com.jeffmony.media.editor.AudioEffectListener;
 import com.jeffmony.media.editor.ClipListener;
 import com.jeffmony.media.editor.IVideoEditor;
 import com.jeffmony.media.editor.IVideoThumbnailListener;

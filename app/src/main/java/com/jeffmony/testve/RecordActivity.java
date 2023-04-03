@@ -54,7 +54,7 @@ public class RecordActivity extends AppCompatActivity {
         mVideoRecord.setSurfaceView(surfaceView);
         mVideoRecord.setCameraFacing(Facing.BACK);
         mVideoRecord.setPreviewResolution(Resolution.Resolution1920x1080);
-        mVideoRecord.setPictureResolution(Resolution.Resolution1920x1080);
+        mVideoRecord.setPictureResolution(Resolution.Resolution3840x2160);
         mVideoRecord.setVideoRenderListener(new VideoRenderListener() {
             @Override
             public void onCreateEGLWindow() {

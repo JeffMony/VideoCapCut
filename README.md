@@ -8,6 +8,7 @@
 - 转场
 - 画中画
 - 花字
+- 分镜/四分镜
 
 #### 相机预览/拍照/拍视频
 - 相机预览
@@ -32,6 +33,12 @@
   - 软硬编解码
 - x264和x265编码
 
+#### 音频播放器
+- 播放音乐
+- 循环播放
+- 设置音量
+- 倍速
+
 ### 音视频开发必备技能
 - MediaCodec
 - FFmpeg
@@ -51,14 +58,14 @@
 
 ### 视频超分
 - 先学习一下tensorflow
-  https://github.com/opencv/opencv
-  https://github.com/opencv/opencv_contrib
+  - https://github.com/opencv/opencv
+  - https://github.com/opencv/opencv_contrib
   
 
 ### 人脸检测
 - Android系统原生的FaceDetector
-  https://developer.android.com/reference/android/media/FaceDetector
-  https://blog.csdn.net/yubo_725/article/details/46051573
+  - https://developer.android.com/reference/android/media/FaceDetector
+  - https://blog.csdn.net/yubo_725/article/details/46051573
   
 
 
