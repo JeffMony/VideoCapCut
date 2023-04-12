@@ -1,7 +1,6 @@
 package com.jeffmony.testve;
 
 import android.os.Bundle;
-import android.util.Log;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
@@ -21,14 +20,14 @@ public class VideoInfoActivity extends AppCompatActivity {
         mVideoExtract = MediaSdk.createVideoExtract();
 
         int ret = mVideoExtract.setPath("/sdcard/DCIM/Camera/output.mp4");
-        Log.e(LogTag.TAG, "setPath ret="+ret);
+        android.util.Log.e(LogTag.TAG, "setPath ret="+ret);
 
         int duration = mVideoExtract.getDuration();
-        Log.e(LogTag.TAG, "duration="+duration);
+        android.util.Log.e(LogTag.TAG, "duration="+duration);
 
         int width = mVideoExtract.getWidth();
         int height = mVideoExtract.getHeight();
-        Log.e(LogTag.TAG, "width="+width+", height="+height);
+        android.util.Log.e(LogTag.TAG, "width="+width+", height="+height);
     }
 
     @Override

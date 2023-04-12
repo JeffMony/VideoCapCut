@@ -1,7 +1,6 @@
 package com.jeffmony.testve;
 
 import android.os.Bundle;
-import android.util.Log;
 import android.widget.Button;
 import android.widget.SeekBar;
 
@@ -10,12 +9,9 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.jeffmony.media.LogTag;
 import com.jeffmony.media.MediaSdk;
-import com.jeffmony.media.audio.AudioInfoListener;
 import com.jeffmony.media.audio.AudioListener;
 import com.jeffmony.media.audio.IAudioInfo;
 import com.jeffmony.media.audio.IAudioPlayer;
-
-import java.util.List;
 
 public class AudioActivity extends AppCompatActivity {
 
@@ -39,19 +35,19 @@ public class AudioActivity extends AppCompatActivity {
             @Override
             public void onPrepared() {
                 super.onPrepared();
-                Log.e(LogTag.TAG, "onPrepared");
+                android.util.Log.e(LogTag.TAG, "onPrepared");
             }
 
             @Override
             public void onError(int type, int code, String msg) {
                 super.onError(type, code, msg);
-                Log.e(LogTag.TAG, "code="+code);
+                android.util.Log.e(LogTag.TAG, "code="+code);
             }
 
             @Override
             public void onPosition(int position, int duration) {
                 super.onPosition(position, duration);
-                Log.e(LogTag.TAG, "position="+position+", duration="+duration);
+                android.util.Log.e(LogTag.TAG, "position="+position+", duration="+duration);
                 if (duration != mDuration) {
                     mDuration = duration;
                     mSeekBar.setMax(duration);

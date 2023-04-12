@@ -19,14 +19,30 @@
         android:orientation="horizontal" >
         <Button
             android:id="@+id/btn_record"
-            android:text="开始录制"
-            android:layout_width="wrap_content"
+            android:text="录制"
+            android:layout_weight="1"
+            android:layout_width="0dp"
             android:layout_height="wrap_content" />
         
         <Button
             android:id="@+id/btn_capture"
             android:text="拍照"
-            android:layout_width="wrap_content"
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content" />
+
+        <Button
+            android:id="@+id/btn_switch"
+            android:text="前后"
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content" />
+
+        <Button
+            android:id="@+id/btn_ratio"
+            android:text="全屏"
+            android:layout_weight="1"
+            android:layout_width="0dp"
             android:layout_height="wrap_content" />
     </LinearLayout>
 

@@ -1,11 +1,10 @@
 package com.jeffmony.testve;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.Manifest;
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.github.florent37.runtimepermission.RuntimePermission;
 import com.jeffmony.media.LogTag;
@@ -55,25 +54,25 @@ public class MainActivity extends AppCompatActivity {
 
         findViewById(R.id.btn_video_export).setOnClickListener(v -> {
             IVideoExport videoExport = MediaSdk.createVideoExport();
-            String config = "/sdcard/DCIM/config.json";
-            ExportInfo exportInfo = new ExportInfo("/sdcard/DCIM/output.mp4");
+            String config = "/sdcard/Pictures/config.json";
+            ExportInfo exportInfo = new ExportInfo("/sdcard/Pictures/output.mp4");
             videoExport.export(config, InputType.FILE, exportInfo, new ExportListener() {
                 @Override
                 public void onExportProgress(float progress) {
                     super.onExportProgress(progress);
-                    Log.e(LogTag.TAG, "onExportProgress progress="+progress);
+                    android.util.Log.e(LogTag.TAG, "onExportProgress progress="+progress);
                 }
 
                 @Override
                 public void onExportComplete() {
                     super.onExportComplete();
-                    Log.e(LogTag.TAG, "onExportComplete");
+                    android.util.Log.e(LogTag.TAG, "onExportComplete");
                 }
 
                 @Override
                 public void onExportFailed(int type, int code, String msg) {
                     super.onExportFailed(type, code, msg);
-                    Log.e(LogTag.TAG, "onExportFailed code="+code);
+                    android.util.Log.e(LogTag.TAG, "onExportFailed code="+code);
                 }
 
                 @Override

@@ -5,6 +5,7 @@ import android.graphics.PointF;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.MotionEvent;
+import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.Toast;
 
@@ -29,7 +30,11 @@ import com.jeffmony.media.view.PreviewSurfaceView;
 public class RecordActivity extends AppCompatActivity {
 
     private IVideoRecord mVideoRecord;
+
+    private PreviewSurfaceView mSurfaceView;
     private int mBackgroundId = -1;
+
+    private int mRatio = 0;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -37,9 +42,8 @@ public class RecordActivity extends AppCompatActivity {
         setContentView(R.layout.activity_record);
 
         mVideoRecord = MediaSdk.createVideoRecord(this.getApplicationContext());
-        PreviewSurfaceView surfaceView = findViewById(R.id.surface_view);
-
-        surfaceView.setOnTouchListener((v, event) -> {
+        mSurfaceView = findViewById(R.id.surface_view);
+        mSurfaceView.setOnTouchListener((v, event) -> {
             if (event.getAction() == MotionEvent.ACTION_DOWN) {
                 mVideoRecord.focus(new PointF(event.getX(), event.getY()), new OnFocusCallback() {
                     @Override
@@ -51,10 +55,9 @@ public class RecordActivity extends AppCompatActivity {
             return false;
         });
 
-        mVideoRecord.setSurfaceView(surfaceView);
+        mVideoRecord.setSurfaceView(mSurfaceView);
         mVideoRecord.setCameraFacing(Facing.BACK);
         mVideoRecord.setPreviewResolution(Resolution.Resolution1920x1080);
-        mVideoRecord.setPictureResolution(Resolution.Resolution3840x2160);
         mVideoRecord.setVideoRenderListener(new VideoRenderListener() {
             @Override
             public void onCreateEGLWindow() {
@@ -108,7 +111,7 @@ public class RecordActivity extends AppCompatActivity {
             if (mVideoRecord.isRecording()) {
                 mVideoRecord.stopRecord();
                 Toast.makeText(this, "录制成功", Toast.LENGTH_SHORT).show();
-                recordBtn.setText("开始录制");
+                recordBtn.setText("录制");
             } else {
                 String name = "/sdcard/DCIM/Camera/jeffmony-record-" + System.currentTimeMillis() +".mp4";
                 ExportInfo exportInfo = new ExportInfo(name);
@@ -123,7 +126,7 @@ public class RecordActivity extends AppCompatActivity {
                 } else {
                     Toast.makeText(this, "录制失败", Toast.LENGTH_SHORT).show();
                 }
-                recordBtn.setText("停止录制");
+                recordBtn.setText("停止");
             }
         });
 
@@ -135,6 +138,7 @@ public class RecordActivity extends AppCompatActivity {
                 @Override
                 public void onTakePicture(Bitmap bitmap) {
                     super.onTakePicture(bitmap);
+                    Toast.makeText(RecordActivity.this, "拍照成功", Toast.LENGTH_SHORT).show();
                     Log.i(LogTag.TAG, "w="+bitmap.getWidth()+", h="+bitmap.getHeight());
                     String path = "/sdcard/DCIM/Camera/jeffmony-photo-" + System.currentTimeMillis() + ".jpg";
                     ImageUtils.saveImage(bitmap, path);
@@ -148,6 +152,40 @@ public class RecordActivity extends AppCompatActivity {
             });
         });
 
+        findViewById(R.id.btn_switch).setOnClickListener(v -> {
+            if (mVideoRecord == null) {
+                return;
+            }
+            mVideoRecord.switchCamera();
+        });
+
+        Button ratioBtn = findViewById(R.id.btn_ratio);
+        ViewGroup.LayoutParams layoutParams = mSurfaceView.getLayoutParams();
+
+        ratioBtn.setOnClickListener(v -> {
+            if (mRatio == 0) {
+                mRatio = 1;
+                ratioBtn.setText("16/9");
+                layoutParams.width = 1080;
+                layoutParams.height = 1920;
+            } else if (mRatio == 1) {
+                mRatio = 2;
+                ratioBtn.setText("4/3");
+                layoutParams.width = 1080;
+                layoutParams.height = 1440;
+            } else if (mRatio == 2) {
+                mRatio = 3;
+                ratioBtn.setText("1/1");
+                layoutParams.width = 1080;
+                layoutParams.height = 1080;
+            } else if (mRatio == 3) {
+                mRatio = 0;
+                ratioBtn.setText("全屏");
+                layoutParams.width = ViewGroup.LayoutParams.MATCH_PARENT;
+                layoutParams.height = ViewGroup.LayoutParams.MATCH_PARENT;
+            }
+            mSurfaceView.setLayoutParams(layoutParams);
+        });
     }
 
     @Override

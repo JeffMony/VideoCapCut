@@ -140,7 +140,7 @@ public class EditorActivity extends AppCompatActivity {
         String thumbnailPath = "/sdcard/Pictures/thumbnail";
         mVideoEditor.setThumbnailDirectory(thumbnailPath);
 
-        MediaClip clip1 = new MediaClip("/sdcard/DCIM/Camera/output.mp4");
+        MediaClip clip1 = new MediaClip("/sdcard/DCIM/Camera/share_a7c480a4c196e034b5cfa2ee315cf2b6.mp4");
         clip1.setStartTime(0 * 1000);
         clip1.setEndTime(120 * 1000);
         clip1.setSpeed(1.0f);
@@ -148,7 +148,7 @@ public class EditorActivity extends AppCompatActivity {
         clip1.setThumbnailListener(new IVideoThumbnailListener() {
             @Override
             public void onThumbnail(String videoPath, String thumbnailPath, int time, int index, int type) {
-                Log.i(LogTag.TAG, "onThumbnail thumbnailPath=" + thumbnailPath+", time="+time);
+//                Log.i(LogTag.TAG, "onThumbnail thumbnailPath=" + thumbnailPath+", time="+time);
                 // saveThumbnail(thumbnailPath);
             }
 
@@ -225,7 +225,7 @@ public class EditorActivity extends AppCompatActivity {
 
         // if (mMusicId == -1) {
         //     mVideoEditor.addMusic("{\n" +
-        //             "    \"path\":\"/sdcard/DCIM/audio/test.wav\",\n" +
+        //             "    \"path\":\"/sdcard/poizon/audio/test.wav\",\n" +
         //             "    \"clipOffset\":30000,\n" +
         //             "    \"startTime\":0,\n" +
         //             "    \"endTime\":30000,\n" +
@@ -252,7 +252,7 @@ public class EditorActivity extends AppCompatActivity {
             mVideoEditor.pause();
             if (mMusicId != -1) {
                 mVideoEditor.updateMusic(mMusicId, "{\n" +
-                        "    \"path\":\"/sdcard/DCIM/audio/test.wav\",\n" +
+                        "    \"path\":\"/sdcard/poizon/audio/test.wav\",\n" +
                         "    \"clipOffset\":5000,\n" +
                         "    \"startTime\":5000,\n" +
                         "    \"endTime\":20000,\n" +
