@@ -2,7 +2,20 @@
 #### 架构介绍
 ![VE软件架构](./files/VE软件架构.png)
 
+- 特效模块是公用的，视频编辑可以用，相机也可以用
+- 支持软硬编解码
+- 支持H264和HEVC编码
+- 支持并行导出
+
+#### SDK包
+具体见：<br>
+https://github.com/JeffMony/VideoCapCut/blob/main/app/libs/test_ve_2.7.0.aar <br>
+
+具体可以咨询: jeffmony@163.com 
+
 #### 特效
+[视频特效介绍](./VideoEffect.md)
+
 - 贴纸
 - 色彩调节
 - 滤镜
@@ -14,6 +27,8 @@
 - 分镜/四分镜
 
 #### 相机预览/拍照/拍视频
+[相机介绍](./VideoRecord.md)
+
 - 相机预览
 - 比例适配
 - 拍照
@@ -30,6 +45,8 @@
 - 抽取视频缩略图
 
 #### 视频编码导出
+[视频导出介绍](./VideoExport.md)
+
 - 并行导出
 - 可以设置的参数：
   - GOP
